@@ -1,15 +1,19 @@
 version: '3'
 services:
   app:
-    container_name: top_g
+    container_name: discord_bot
     build: .
     volumes:
-      - /opt/discbot/.env:/app/.env
-      - /opt/discbot/assets:/assets
+      - ./.env:/app/.env
+      - ./assets:/assets
     env_file:
-      - /opt/discbot/.env
+      - ./.env
+    depends_on:
+      - redis
   redis:
     container_name: redis
     ports: 
       - 6379:6379
     image: redis
+    volumes:
+      - ./redis-volume:/data

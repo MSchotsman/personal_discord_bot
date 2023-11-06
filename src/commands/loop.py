@@ -115,10 +115,10 @@ class loops(commands.Cog):
                 await channel.send(e.message + ', please wait a minute.')
                 return
             top_5 = sorted(result, key=lambda x: x['taken'], reverse=True)[:5]
-            for index, top_g in enumerate(top_5):
-                leaderboard_text += f'\n{index + 1}. <@{top_g["disc_id"]}> | {top_g["taken"]} on **{top_g["champion"]}**'
+            for index, top in enumerate(top_5):
+                leaderboard_text += f'\n{index + 1}. <@{top["disc_id"]}> | {top["taken"]} on **{top["champion"]}**'
             description = f"Type .register to be able to participate"
-            embed = discord.Embed(title="💪🏽TOPPEST G's💪🏽\n\n", description=f"{description}", color=0xFF0000)
+            embed = discord.Embed(title="💪🏽Tons of Tanking💪🏽\n\n", description=f"{description}", color=0xFF0000)
             embed.add_field(name="Top Damage Taken Past 5 Games", value=leaderboard_text)
             await channel.send(embed=embed)
 
